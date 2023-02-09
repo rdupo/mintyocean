@@ -1,5 +1,6 @@
 body {
-	background-color: #fff;
+	background-color: #2b2b2b;
+	color: #fff;
 	font-family: "Ubuntu Mono", sans-serif;
 	overflow-x: hidden;
 }
@@ -27,6 +28,16 @@ footer {
 	width: 35px;
 }
 
+.desc {
+	margin-bottom: 2em;
+}
+
+.mint {
+	color: #83dfb2;
+	font-weight: 600;
+	display: inline-block;
+}
+
 .lwrap>img, .lwrap>a {
 	display: inline-block;
 	margin: 10px 0;
@@ -39,7 +50,7 @@ footer {
 .hero {
 	display: block;
 	font-family: "Silkscreen", sans-serif;
-	background-color: #648596;
+	background-color: #83dfb2;
 }
 
 .ib, .dropdown {
@@ -55,6 +66,7 @@ footer {
 .title {
 	vertical-align: middle;	
 	margin: 0;	
+	color: #212529;
 }
 
 .search {
@@ -62,7 +74,7 @@ footer {
 }
 
 .nav {
-	background-color: #212529;
+	background-color: #000;
     display: block;
     padding: 0.25em 3em;
     font-size: 1.25em;
@@ -75,7 +87,7 @@ footer {
 }
 
 .nav_el:hover {
-	color: #648596
+	color: #83dfb2
 }
 
 #phunky-list {
@@ -84,22 +96,24 @@ footer {
 }
 
 .phunk-wrapper {
-	background-color: #eaeaea;
+	background-color: #83dfb2;
 	margin: 0 2.5% 1.5em;
 	padding: 5px;
-	border: 5px solid #eaeaea;
+	border: 5px solid #83dfb2;
+	cursor: pointer;
 }
 
-.phunk-id {
+.phunk-id, .i-phunk-id {
 	margin: 0;
 	font-weight: 600;
 	font-size: 1.25em;
 	font-family: "Silkscreen", sans-serif;
+	color: #212529;
 }
 
 .tit {
 	font-size: 2em;
-	color: #648596;
+	color: #83dfb2;
 }
 
 .phunk-img {
@@ -108,7 +122,7 @@ footer {
 }
 
 .p-btn {
-	background: #648596;
+	background: #83dfb2;
 	border: none;
 	color: #fff;
 	padding: 2px 8px;
@@ -156,7 +170,7 @@ footer {
 }
 
 .active {
-	color: #648596;
+	color: #83dfb2;
 }
 
 #content {
@@ -171,12 +185,15 @@ footer {
 	border-radius: 8px 0 0 8px;
 	width: 200px;
 	border-right: none;
+	background-color: #d7fae9;
 }
 
 .btn-outline-secondary {
 	padding: 0 0.25rem;
     border-radius: 0 8px 8px 0;
     border-left: none;
+    background-color: #83dfb2;
+    color:#212529;
 }
 
 #id {
@@ -195,25 +212,24 @@ footer {
 }
 
 .btn-outline-secondary:hover {
-	background-color: #648596;
-	border-color: #648596;
+	background-color: #83dfb2;
+	border-color: #83dfb2;
 }
 
 #view, #hide {
-	background-color: #648596;
-	border: solid 1px #648596;
-	color: white;
+	background-color: #83dfb2;
+	border: solid 1px #83dfb2;
 	border-radius: 8px;
 	padding: 2px 6px;
 	margin: 0 0 0 1em;
 }
 
-#hide, #filters {
+#hide, #filters, .hide-me {
 	display: none;
 }
 
 select {
-	color: #648596;
+	color: #212529;
 }
 
 option {
@@ -232,6 +248,48 @@ option {
 
 .data-beardhide,.data-cheekshide,.data-earshide,.data-emohide,.data-eyeshide,.data-facehide,.data-hairhide,.data-lipshide,.data-mouthhide,.data-neckhide,.data-nosehide,.data-sexhide,.data-teethhide {
 	display: none;
+}
+
+.i-info {
+	color: #212529;
+	background-color: #83dfb2;
+	position: fixed;
+    z-index: 10;
+    top: 10%;
+    left: 20%;
+    right: 20%;
+    width: 60%;
+}
+
+.i-btn {
+	color: #fff;
+	background-color: #212529;
+	padding: 2px 8px;
+	border: none;
+	margin-bottom: 2em;
+	border-radius: 8px;
+}
+
+.x {
+	color: #212529;
+	background-color: transparent;
+	border: none;
+	text-decoration: underline;
+	margin-bottom: 1em;
+}
+
+.i-btm {
+	vertical-align: bottom;
+}
+
+#overlay {
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #0000008a;
 }
 
 @media screen and (max-width: 565.9px) {

@@ -7,13 +7,12 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Silkscreen|Ubuntu+Mono|Roboto+Mono">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<title>Minty Sea</title>
+		<title>MintySea</title>
 	</head>
 	<body id="content">
 		<div class="hero">
 				<img class="ib hero-icon" src="phunk1775.svg">
-				<h1 class="ib title desk">Minty Sea</h1>
+				<h1 class="ib title desk">MintySea</h1>
 				<h1 class="title mobile">Minty<br>Sea</h1>
 		</div>
 		<div class="nav">
@@ -22,18 +21,18 @@
 		</div>
 		<div class="desc">
 			<p class="phunk-id lab tit">MARKETPLACE</p>
-			<p>Minty Sea is a phee-phree marketplace to buy and sell V3 Phunks. </p>
+			<p>MintySea is a phee-phree marketplace to buy and sell V3 Phunks. </p>
 			<p>v3Phunks are a low entry-point evolution of the CryptoPhunks ecosystem. 10,000 Phunks minting for .005ETH each with absolutely 100% of proceeds going directly and trustlessly to <a href="https://maps.org/" target="_blank" class="mint">MAPS</a>, a mental health organization. A Philanthropic, Phree, and Phunky arm of the overall CryptoPhunk community.</p>
 		</div>
 		<div class="search">
 			<label for="id">Phunk ID</label>
 			<input type="text" id="id" name="id" minlength="1" maxlength="4" placeholder="Phunk ID..." onkeyup="pp()">
-			<button id="view" onclick="$('#view, #hide, #filters').toggle()">View Filters</button>
-			<button id="hide" onclick="$('#view, #hide, #filters').toggle()">Hide Filters</button>
+			<button id="view" onclick="togs();">View Filters</button>
+			<button id="hide" class="hide-me" onclick="togs();">Hide Filters</button>
 		</div>
-		<div id="filters">
+		<div id="filters" class="hide-me">
 			<div class="input-group" data-filter="beard">
-			  	<select class="select" type="text" name="beard" id="data-beard">
+			  	<select class="select" type="text" name="beard" id="data-beard" onchange="af('data-beard');">
 					<option value="" disabled selected hidden>Beard</option>
 					<option value="None">None</option>
 					<option value="BigBeard">Big Beard</option>
@@ -50,46 +49,46 @@
 					<option value="ShadowBeard">Shadow Beard</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="beardx" type="button" onclick="clr('#beardx'); reset('data-beard')">x</button>
+			    <button class="btn btn-outline-secondary" id="beardx" type="button" onclick="clr('beardx'); reset('data-beard')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="cheeks">
-			  	<select class="select" type="text" name="cheeks" id="data-cheeks">
+			  	<select class="select" type="text" name="cheeks" id="data-cheeks" onchange="af('data-cheeks');">
 					<option value="" disabled selected hidden>Cheeks</option>
 					<option value="None">None</option>
 					<option value="RosyCheeks">Rosy Cheeks</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="cheeksx" type="button" onclick="clr('#cheeksx');reset('data-cheeks')">x</button>
+			    <button class="btn btn-outline-secondary" id="cheeksx" type="button" onclick="clr('cheeksx');reset('data-cheeks')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="ears">
-			  	<select class="select" type="text" name="ears" id="data-ears">
+			  	<select class="select" type="text" name="ears" id="data-ears" onchange="af('data-ears');">
 					<option value="" disabled selected hidden>Ears</option>
 					<option value="None">None</option>
 					<option value="Earring">Earring</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="earsx" type="button" onclick="clr('#earsx');reset('data-ears')">x</button>
+			    <button class="btn btn-outline-secondary" id="earsx" type="button" onclick="clr('earsx');reset('data-ears')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="emotion">
-			  	<select class="select" type="text" name="emotion" id="data-emo">
+			  	<select class="select" type="text" name="emotion" id="data-emo" onchange="af('data-emo');">
 					<option value="" disabled selected hidden>Emotion</option>
 					<option value="None">None</option>
 					<option value="Frown">Frown</option>
 					<option value="Smile">Smile</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="emox" type="button" onclick="clr('#emox');reset('data-emo')">x</button>
+			    <button class="btn btn-outline-secondary" id="emox" type="button" onclick="clr('emox');reset('data-emo')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="eyes">
-			  	<select class="select" type="text" name="eyes" id="data-eyes">
+			  	<select class="select" type="text" name="eyes" id="data-eyes" onchange="af('data-eyes');">
 					<option value="" disabled selected hidden>Eyes</option>
 					<option value="None">None</option>
 					<option value="3DGlasses">3D Glasses</option>
-					<option value="Big Shades">Big Shades</option>
+					<option value="BigShades">Big Shades</option>
 					<option value="BlueEyeShadow">Blue Eye Shadow</option>
 					<option value="ClassicShades">Classic Shades</option>
 					<option value="ClownEyesBlue">Clown Eyes Blue</option>
@@ -106,22 +105,22 @@
 					<option value="WeldingGoggles">Welding Goggles</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="eyesx" type="button" onclick="clr('#eyesx');reset('data-eyes')">x</button>
+			    <button class="btn btn-outline-secondary" id="eyesx" type="button" onclick="clr('eyesx');reset('data-eyes')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="face">
-			  	<select class="select" type="text" name="face" id="data-face">
+			  	<select class="select" type="text" name="face" id="data-face" onchange="af('data-face');">
 					  <option value="" disabled selected hidden>Face</option>
 					  <option value="None">None</option>
 					  <option value="Mole">Mole</option>
 					  <option value="Spots">Spots</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="facex" type="button" onclick="clr('#facex');reset('data-face')">x</button>
+			    <button class="btn btn-outline-secondary" id="facex" type="button" onclick="clr('facex');reset('data-face')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="hair">
-			  	<select class="select" type="text" name="hair" id="data-hair">
+			  	<select class="select" type="text" name="hair" id="data-hair" onchange="af('data-hair');">
 					<option value="" disabled selected hidden>Hair</option>
 					<option value="None">None</option>
 					<option value="Bandana">Bandana</option>
@@ -167,11 +166,11 @@
 					<option value="WildWhiteHair">Wild White Hair</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="hairx" type="button" onclick="clr('#hairx');reset('data-hair')">x</button>
+			    <button class="btn btn-outline-secondary" id="hairx" type="button" onclick="clr('hairx');reset('data-hair')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="lips">
-			  	<select class="select" type="text" name="lips" id="data-lips">
+			  	<select class="select" type="text" name="lips" id="data-lips" onchange="af('data-lips');">
 					<option value="" disabled selected hidden>Lips</option>
 					<option value="None">None</option>
 					<option value="BlackLipstick">Black Lipstick</option>
@@ -179,11 +178,11 @@
 					<option value="PurpleLipstick">Purple Lipstick</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="lipsx" type="button" onclick="clr('#lipsx');reset('data-lips')">x</button>
+			    <button class="btn btn-outline-secondary" id="lipsx" type="button" onclick="clr('lipsx');reset('data-lips')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="mouth">
-			  	<select class="select" type="text" name="mouth" id="data-mouth">
+			  	<select class="select" type="text" name="mouth" id="data-mouth" onchange="af('data-mouth');">
 					<option value="" disabled selected hidden>Mouth</option>
 					<option value="None">None</option>
 					<option value="Cigarette">Cigarette</option>
@@ -192,11 +191,11 @@
 					<option value="Vape">Vape</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="mouthx" type="button" onclick="clr('#mouthx');reset('data-mouth')">x</button>
+			    <button class="btn btn-outline-secondary" id="mouthx" type="button" onclick="clr('mouthx');reset('data-mouth')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="neck">
-			  	<select class="select" type="text" name="neck" id="data-neck">
+			  	<select class="select" type="text" name="neck" id="data-neck" onchange="af('data-neck');">
 					<option value="" disabled selected hidden>Neck</option>
 					<option value="None">None</option>
 					<option value="Choker">Choker</option>
@@ -204,39 +203,40 @@
 					<option value="SilverChain">Silver Chain</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="neckx" type="button" onclick="clr('#neckx');reset('data-neck')">x</button>
+			    <button class="btn btn-outline-secondary" id="neckx" type="button" onclick="clr('neckx');reset('data-neck')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="nose">
-			  	<select class="select" type="text" name="nose" id="data-nose">
+			  	<select class="select" type="text" name="nose" id="data-nose" onchange="af('data-nose');">
 					<option value="" disabled selected hidden>Nose</option>
 					<option value="None">None</option>
 					<option value="ClownNose">Clown Nose</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="nosex" type="button" onclick="clr('#nosex');reset('data-nose')">x</button>
+			    <button class="btn btn-outline-secondary" id="nosex" type="button" onclick="clr('nosex');reset('data-nose')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="sex">
-			  	<select class="select" type="text" name="sex" id="data-sex">
+			  	<select class="select" type="text" name="sex" id="data-sex" onchange="af('data-sex');">
 					<option value="" disabled selected hidden>Sex</option>
+					<option value="Alien">Alien</option>
 					<option value="Ape">Ape</option>
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
 					<option value="Zombie">Zombie</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="sexx" type="button" onclick="clr('#sexx');reset('data-sex')">x</button>
+			    <button class="btn btn-outline-secondary" id="sexx" type="button" onclick="clr('sexx');reset('data-sex')">x</button>
 			  </div>
 			</div>
 			<div class="input-group" data-type="teeth">
-			  	<select class="select" type="text" name="teeth" id="data-teeth">
+			  	<select class="select" type="text" name="teeth" id="data-teeth" onchange="af('data-teeth');">
 						<option value="" disabled selected hidden>Teeth</option>
 						<option value="None">None</option>
 						<option value="BuckTeeth">Buck Teeth</option>
 				</select>
 			  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" id="teethx" type="button" onclick="clr('#teethx');reset('data-teeth')">x</button>
+			    <button class="btn btn-outline-secondary" id="teethx" type="button" onclick="clr('teethx');reset('data-teeth')">x</button>
 			  </div>
 			</div>
 		</div>
@@ -244,28 +244,28 @@
 		<div class="hide-me" id='interact'>
 			<div class="i-info wrapper">
 				<div class="ib col-md-5">
-					<img class="i-phunk-img" src="phunk0013.svg">
+					<img id="i-phunk-img" src="phunk0013.svg">
 				</div>
 				<div class="ib col-md-4 i-btm">
-					<p class="attr i-phunk-id">Phunk 13</p>
-					<p class="attr i-sex"></p>
-					<p class="attr i-eyes"></p>
-					<p class="attr i-lips"></p>
-					<p class="attr i-hair"></p>				
-					<p class="attr i-ears"></p>
-					<p class="attr i-emo"></p>
-					<p class="attr i-beard"></p>
-					<p class="attr i-face"></p>
-					<p class="attr i-mouth"></p>
-					<p class="attr i-neck"></p>
-					<p class="attr i-cheeks"></p>
-					<p class="attr i-nose"></p>
-					<p class="attr i-teeth"></p> 
+					<p class="attr" id="i-phunk-id">Phunk 13</p>
+					<p class="attr" id="i-sex"></p>
+					<p class="attr" id="i-eyes"></p>
+					<p class="attr" id="i-lips"></p>
+					<p class="attr" id="i-hair"></p>				
+					<p class="attr" id="i-ears"></p>
+					<p class="attr" id="i-emo"></p>
+					<p class="attr" id="i-beard"></p>
+					<p class="attr" id="i-face"></p>
+					<p class="attr" id="i-mouth"></p>
+					<p class="attr" id="i-neck"></p>
+					<p class="attr" id="i-cheeks"></p>
+					<p class="attr" id="i-nose"></p>
+					<p class="attr" id="i-teeth"></p> 
 				</div>
 				<div class="ib col-md-2 i-btm">
 					<button class="i-btn">BUY PHUNK</button>
 					<button class="i-btn">PLACE BID</button>
-					<button class="x" onclick="$('#interact,#overlay').addClass('hide-me')">CLOSE</button>	
+					<button class="x" id="x" onclick="hide();">CLOSE</button>	
 				</div>
 			</div>
 		</div>

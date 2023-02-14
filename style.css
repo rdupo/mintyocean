@@ -246,7 +246,7 @@ option {
 	height: 2em;
 }
 
-.data-beardhide,.data-cheekshide,.data-earshide,.data-emohide,.data-eyeshide,.data-facehide,.data-hairhide,.data-lipshide,.data-mouthhide,.data-neckhide,.data-nosehide,.data-sexhide,.data-teethhide {
+.data-traitshide,.data-beardhide,.data-cheekshide,.data-earshide,.data-emohide,.data-eyeshide,.data-facehide,.data-hairhide,.data-lipshide,.data-mouthhide,.data-neckhide,.data-nosehide,.data-sexhide,.data-teethhide {
 	display: none;
 }
 

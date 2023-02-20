@@ -17,8 +17,12 @@ a, .wrapper{
 	display: block;
 }
 
+a:hover {
+	color: #d7fae9;
+}
+
 footer {
-	background-color: #212529;
+	background-color: #000;
 	color: #fff;
 	line-height: 3em;
 	margin: 10em 0 0 0;
@@ -41,6 +45,15 @@ footer {
 .lwrap>img, .lwrap>a {
 	display: inline-block;
 	margin: 10px 0;
+}
+
+.lwrap>a {
+	color: #fff;
+	margin-left: 8px;
+}
+
+.lwrap>a:hover {
+	color: #83dfb2;
 }
 
 .mobile{
@@ -97,10 +110,12 @@ footer {
 
 .phunk-wrapper {
 	background-color: #83dfb2;
-	margin: 0 2.5% 1.5em;
+	margin: 0 .5em 1em;
 	padding: 5px;
 	border: 5px solid #83dfb2;
 	cursor: pointer;
+	vertical-align: top;
+	border-radius: 8px;
 }
 
 .phunk-id, #i-phunk-id {
@@ -109,6 +124,13 @@ footer {
 	font-size: 1.25em;
 	font-family: "Silkscreen", sans-serif;
 	color: #212529;
+	text-align: left;
+}
+
+#i-phunk-id {
+	font-size: 2em;
+  margin: 0 0.5em;
+  color: #83dfb2;
 }
 
 .tit {
@@ -197,7 +219,11 @@ footer {
 }
 
 #id {
-	/*border-radius: 8px;*/
+	border-radius: 8px;
+	height: 1.75em;
+	background-color: #d7fae9;
+	padding: 2px 6px;
+	border: none;
 }
 
 .input-group {
@@ -222,6 +248,7 @@ footer {
 	border-radius: 8px;
 	padding: 2px 6px;
 	margin: 0 0 0 1em;
+	height: 1.75em;
 }
 
 .hide-me {
@@ -256,9 +283,14 @@ option {
 	position: fixed;
     z-index: 10;
     top: 10%;
-    left: 20%;
-    right: 20%;
-    width: 60%;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    max-height: 80%;
+}
+
+.i-info ::-webkit-scrollbar {
+  background: #212529;
 }
 
 .i-btn {
@@ -266,20 +298,62 @@ option {
 	background-color: #212529;
 	padding: 2px 8px;
 	border: none;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 	border-radius: 8px;
+	width: 100%;
+}
+
+.i-btn:hover {
+	background-color: #4f886c;
+}
+
+#view:hover, #hide:hover, .sorter:hover {
+	background-color: #74c79f;
+}
+
+.phunk-wrapper:hover {
+	border: #fff 2px solid;
+}
+
+#bidding {
+		width: 100%;
+    border-radius: 8px;
+    margin: 0.5em 0 1em 0;
+    background-color: #d7fae9;
+    border: #212529 2px solid;
+    color: #212529;
+}
+
+#bid-amt {
+	width: 100%;
+}
+
+.w28p {
+	width: 28%;
+}
+
+select:hover, #bidding:hover {
+	background-color: #bbf2d8;
 }
 
 .x {
-	color: #212529;
+	color: #fff;
 	background-color: transparent;
 	border: none;
 	text-decoration: underline;
-	margin-bottom: 1em;
+	vertical-align: text-bottom;
+}
+
+#x:hover {
+	color: #83dfb2;
 }
 
 .i-btm {
-	vertical-align: bottom;
+	vertical-align: top;
+}
+
+#bid-amt-l {
+	margin-left: 0.25em;
 }
 
 #overlay {
@@ -292,10 +366,58 @@ option {
 	background-color: #0000008a;
 }
 
+.pprice {
+	height: 0.5em;
+  text-align: start;
+  margin: 0.5em 0 1em;
+  color: #212529;
+}
+
+.sorter {
+	margin: 0 0 0 1em;
+	padding: 2px 6px;
+	height: 1.75em;
+	border: solid 1px #83dfb2;
+  border-radius: 8px;
+  background: #83dfb2;
+}
+
+.sorter option {
+	background-color: #d7fae9;
+}
+
+.mt1 {
+	margin-top: 1em;
+}
+
+.i-banner {
+	background-color: #212529;
+	margin-bottom: 1em;
+}
+
+.right {
+	text-align: right;
+}
+
+#bidding>* {
+	display: block;
+}
+
+.w75 {
+	width: 75%;
+}
+
+.w20 {
+	width: 20%;
+}
+
 @media screen and (max-width: 565.9px) {
 	.desk {display: none;}
 	.mobile {
 		display: inline-block;
 		font-size: 1.75rem;
 	}
+	.i-info {
+    overflow-y: scroll;
+}
 }

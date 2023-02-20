@@ -4,7 +4,7 @@ function pp() {
   input = document.getElementById("id");
   filter = input.value;
   ul = document.getElementById("phunky-list");
-  li = ul.getElementsByTagName("p");
+  li = ul.getElementsByClassName("phunk-id");
 
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerText;
@@ -62,20 +62,23 @@ function deets(x) {
   document.getElementById('overlay').classList.remove('hide-me');
   var d = document.getElementById(x);
   var s = d.firstElementChild.getAttribute('src');
-  var eye = d.getAttribute('data-eyes');
-  var sex = d.getAttribute('data-sex');
-  var lip = d.getAttribute('data-lips');
-  var hair = d.getAttribute('data-hair');
-  var ear = d.getAttribute('data-ears');
-  var emo = d.getAttribute('data-emo');
-  var bea = d.getAttribute('data-beard');
-  var face = d.getAttribute('data-face');
-  var mou = d.getAttribute('data-mouth');
-  var nec = d.getAttribute('data-neck');
-  var che = d.getAttribute('data-cheeks');
-  var nos = d.getAttribute('data-nose');
-  var tee = d.getAttribute('data-teeth');
-  document.getElementById('i-phunk-id').textContent=Content='PHUNK ' + x;
+  var eye = d.getAttribute('data-eyes').replace(/-/g,' ');
+  var sex = d.getAttribute('data-sex').replace(/-/g,' ');
+  var lip = d.getAttribute('data-lips').replace(/-/g,' ');
+  var hair = d.getAttribute('data-hair').replace(/-/g,' ');
+  if(hair == 'Do rag') {var hair = 'Do-rag';};
+  var ear = d.getAttribute('data-ears').replace(/-/g,' ');
+  var emo = d.getAttribute('data-emo').replace(/-/g,' ');
+  var bea = d.getAttribute('data-beard').replace(/-/g,' ');
+  var face = d.getAttribute('data-face').replace(/-/g,' ');
+  var mou = d.getAttribute('data-mouth').replace(/-/g,' ');
+  var nec = d.getAttribute('data-neck').replace(/-/g,' ');
+  var che = d.getAttribute('data-cheeks').replace(/-/g,' ');
+  var nos = d.getAttribute('data-nose').replace(/-/g,' ');
+  var tee = d.getAttribute('data-teeth').replace(/-/g,' ');
+  var bid = Number(d.getAttribute('data-bid'));
+  var pri = Number(d.getAttribute('data-price'));
+  document.getElementById('i-phunk-id').textContent=Content='PHUNK #' + x;
   document.getElementById('i-phunk-img').setAttribute('src',s);
   document.getElementById('i-sex').textContent=Content = 'Sex: ' + sex;
   if (eye != 'None') {document.getElementById('i-eyes').textContent='Eyes: ' + eye};
@@ -90,15 +93,80 @@ function deets(x) {
   if (che != 'None') {document.getElementById('i-cheeks').textContent='Cheeks: ' + che};
   if (nos != 'None') {document.getElementById('i-nose').textContent='Nose: ' + nos};
   if (tee != 'None') {document.getElementById('i-teeth').textContent='Teeth: ' + tee};
+  if (pri > 0) {document.getElementById('price').textContent='Price: ' + pri + 'Ξ'};
+  if (bid > 0) {document.getElementById('bid').textContent='Top Bid: ' + bid + 'Ξ'};
 }
 
-function hide() {
-document.getElementById('interact').classList.add('hide-me'); 
-document.getElementById('overlay').classList.add('hide-me');
+function togl(x) {
+  for (i = 0; i < x.length; i++) {
+      document.getElementById(x[i]).classList.toggle('hide-me');;
+  }
 }
 
-function togs() {
-  document.getElementById('view').classList.toggle('hide-me');
-  document.getElementById('hide').classList.toggle('hide-me');
-  document.getElementById('filters').classList.toggle('hide-me');
+//sort phunks
+function ar() {
+  var s = document.getElementById('sort').value.substr(1,1);
+  var t = document.getElementById('sort').value.substr(0,1);
+  var mylist = document.getElementById('phunky-list');
+  var divs = mylist.getElementsByClassName('phunk-wrapper');
+  var listitems = [];
+  for (i = 0; i < divs.length; i++) {
+          listitems.push(divs.item(i));
+  }
+  listitems.sort(function(a, b) {
+      if (t == 'i') {
+        var compA = a.children[0].getAttribute('src');
+        var compB = b.children[0].getAttribute('src');
+      }
+      else if (t == 't') {
+        var compA = a.getAttribute('data-traits');
+        var compB = b.getAttribute('data-traits');
+      }
+      else {
+        var compA = Number(a.getAttribute('data-price'));
+        var compB = Number(b.getAttribute('data-price'));
+      }
+      if(s == 'd') { return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;}
+      else {return (compA <  compB) ? -1 : (compA > compB) ? 1 : 0;}
+  });
+  for (i = 0; i < listitems.length; i++) {
+      mylist.appendChild(listitems[i]);
+  }
+  is(); 
 }
+
+//init sort
+function is(){
+  var mylist = document.getElementById('phunky-list');
+  var divs = mylist.getElementsByClassName('phunk-wrapper');
+  var listitems = [];
+  for (i = 0; i < divs.length; i++) {
+          listitems.push(divs.item(i));
+  }
+  listitems.sort(function(a, b) {
+      if (Number(a.getAttribute('data-price')) <= 0) { var compA = 0;}
+      else {var compA = 1;}
+
+      if (Number(b.getAttribute('data-price')) <= 0) {var compB = 0;}
+      else {var compB = 1;}
+
+      return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+  });
+  for (i = 0; i < listitems.length; i++) {
+      mylist.appendChild(listitems[i]);
+  } 
+}
+
+//clear bid
+function cbid() {
+  document.getElementById('bid-amt').value = '';
+}
+
+//hide bid
+function hbid() {
+  document.getElementById('bidding').classList.add('hide-me');
+  document.getElementById('bid-amt').classList.add('hide-me');
+  document.getElementById('bid-amt-l').classList.add('hide-me');
+}
+
+is();

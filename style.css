@@ -419,5 +419,17 @@ select:hover, #bidding:hover {
 	}
 	.i-info {
     overflow-y: scroll;
-}
+	}
+	#hide, #view, #id, .sorter {
+		margin: 0 0 1em 0;
+	}
+	.input-group {
+		padding: 0;
+	}
+
+	.i-btm {
+		width: 80%;
+		margin: 5% 10%;
+		padding: 0;
+	}
 }

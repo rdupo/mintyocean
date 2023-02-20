@@ -371,6 +371,7 @@ select:hover, #bidding:hover {
   text-align: start;
   margin: 0.5em 0 1em;
   color: #212529;
+  font-size: .9em;
 }
 
 .sorter {
@@ -409,6 +410,16 @@ select:hover, #bidding:hover {
 
 .w20 {
 	width: 20%;
+}
+
+.fixed{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.fixed>p {
+	margin: 0;
 }
 
 @media screen and (max-width: 565.9px) {

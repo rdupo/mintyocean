@@ -169,4 +169,4 @@ function hbid() {
   document.getElementById('bid-amt-l').classList.add('hide-me');
 }
 
-is();
+if (!document.URL.includes('ms-links')) {is();}

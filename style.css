@@ -315,7 +315,7 @@ option {
 	border: #fff 2px solid;
 }
 
-#bidding {
+#bidding, #listing {
 		width: 100%;
     border-radius: 8px;
     margin: 0.5em 0 1em 0;
@@ -324,7 +324,7 @@ option {
     color: #212529;
 }
 
-#bid-amt {
+#bid-amt, #sell-amt {
 	width: 100%;
 }
 

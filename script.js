@@ -79,6 +79,7 @@ function deets(x) {
   var bid = Number(d.getAttribute('data-bid'));
   var pri = Number(d.getAttribute('data-price'));
   document.getElementById('i-phunk-id').textContent=Content='PHUNK #' + x;
+  document.getElementById('i-phunk-id').setAttribute('data-id',x);
   document.getElementById('i-phunk-img').setAttribute('src',s);
   document.getElementById('i-sex').textContent=Content = 'Sex: ' + sex;
   if (eye != 'None') {document.getElementById('i-eyes').textContent='Eyes: ' + eye};
@@ -160,6 +161,7 @@ function is(){
 //clear bid
 function cbid() {
   document.getElementById('bid-amt').value = '';
+  document.getElementById('sell-amt').value = '';
 }
 
 //hide bid
@@ -167,6 +169,9 @@ function hbid() {
   document.getElementById('bidding').classList.add('hide-me');
   document.getElementById('bid-amt').classList.add('hide-me');
   document.getElementById('bid-amt-l').classList.add('hide-me');
+  document.getElementById('listing').classList.add('hide-me');
+  document.getElementById('sell-amt').classList.add('hide-me');
+  document.getElementById('sell-amt-l').classList.add('hide-me');
 }
 
 if (!document.URL.includes('ms-links')) {is();}

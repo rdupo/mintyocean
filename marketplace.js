@@ -1,13 +1,51 @@
-/*note--need to add in contract addy and abi for v3phunk contract address
-that is where the setApprovalFroAll function is.
-
-Call that then, once approved, marketplace can xfer nfts*/
-
 //init v3
 const v3ContractAddress = "0x169b1CE420F585d8cB02f3b23240a5b90BA54C92";
 const v3ContractAbi = [
   {
     "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "ownerOf",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+    {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Transfer",
+    "type": "event"
+  },
+  {"inputs": [
       {
         "internalType": "address",
         "name": "operator",
@@ -537,7 +575,8 @@ async function offerPhunkForSale() {
   const setApproval = await v3Contract.setApprovalForAll(contractAddress, true);
   await setApproval.wait();
 
-  const listPrice = Number(document.getElementById("sell-amt").value);
+  const ethPrice = ethers.utils.parseEther(document.getElementById("sell-amt").value);
+  const listPrice = parseInt(ethPrice._hex);
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const listPromise = contract.offerPhunkForSale(phunkId, listPrice);
   await listPromise;
@@ -552,8 +591,11 @@ async function delistPhunk() {
 
 //// accept bid
 async function acceptBidForPhunk() {
+  const setApproval = await v3Contract.setApprovalForAll(contractAddress, true);
+  await setApproval.wait();
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
-  const bidPrice = Number(document.getElementById("bid").textContent);
+  const c = await contract.phunkBids(phunkId).then(new Response);
+  const bidPrice = c.value._hex;
   const acceptBidPromise = contract.acceptBidForPhunk(phunkId, bidPrice);
   await acceptBidPromise;
 }
@@ -561,11 +603,11 @@ async function acceptBidForPhunk() {
 /// buying
 //// buy
 async function buyPhunk() {
-  const res = await contract.phunksOfferedForSale(418).then(function(response) {
+  const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
+  const res = await contract.phunksOfferedForSale(phunkId).then(function(response) {
       return response;
     });
   const minVal = res['minValue']._hex
-  const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const buyPhunkPromise = contract.buyPhunk(phunkId, {value: minVal});
   console.log(phunkId, ":", minVal);
   await buyPhunkPromise;
@@ -574,7 +616,8 @@ async function buyPhunk() {
 //// place bid
 async function bidOnPhunk() {
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
-  const bidVal = document.getElementById("bid-amt").value;
+  const ethBid = ethers.utils.parseEther(document.getElementById("bid-amt").value);
+  const bidVal = parseInt(ethBid._hex);
   const enterBidPromise = contract.enterBidForPhunk(phunkId, {value: bidVal});
   await enterBidPromise;  
 }
@@ -593,7 +636,6 @@ async function withdrawEth() {
   const withdrawEthPromise = contract.withdraw();
   await withdrawEthPromise;
 }
-
 
 //// console log connected wallet balance
 function logBal() {

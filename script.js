@@ -76,8 +76,6 @@ function deets(x) {
   var che = d.getAttribute('data-cheeks').replace(/-/g,' ');
   var nos = d.getAttribute('data-nose').replace(/-/g,' ');
   var tee = d.getAttribute('data-teeth').replace(/-/g,' ');
-  var bid = Number(d.getAttribute('data-bid'));
-  var pri = Number(d.getAttribute('data-price'));
   document.getElementById('i-phunk-id').textContent=Content='PHUNK #' + x;
   document.getElementById('i-phunk-id').setAttribute('data-id',x);
   document.getElementById('i-phunk-img').setAttribute('src',s);
@@ -94,8 +92,32 @@ function deets(x) {
   if (che != 'None') {document.getElementById('i-cheeks').textContent='Cheeks: ' + che};
   if (nos != 'None') {document.getElementById('i-nose').textContent='Nose: ' + nos};
   if (tee != 'None') {document.getElementById('i-teeth').textContent='Teeth: ' + tee};
-  if (pri > 0) {document.getElementById('price').textContent='Price: ' + pri + 'Ξ'};
-  if (bid > 0) {document.getElementById('bid').textContent='Top Bid: ' + bid + 'Ξ'};
+
+  async function btns() {
+    const a = await contract.phunksOfferedForSale(x).then(new Response);
+    const b = await v3Contract.ownerOf(x).then(new Response);
+    const c = await contract.phunkBids(x).then(new Response);
+
+    if(b == signer._address && a.isForSale == 0){show('sellBtn')};    
+    if(b == signer._address && a.isForSale == 1) {show('delist')};
+    if(b == signer._address && c.hasBid == 1) {show('acceptBtn')};
+
+    if(b != signer._address) {show('pBid')};
+    if(b != signer._address && a.isForSale == 1) {show('buyBtn')};
+    if(signer._address == c.bidder && c.hasBid == 1) {show('cBid')};
+
+    const bid = ethers.utils.formatEther(parseInt(c.value._hex));
+    const pri = ethers.utils.formatEther(parseInt(a.minValue._hex));
+    if(c.hasBid){document.getElementById('bid').textContent='Top Bid: ' + bid + 'Ξ'}
+    if (a.isForSale){document.getElementById('price').textContent='Price: ' + pri + 'Ξ'}
+
+    document.getElementById('curOwner').textContent='Owner: ' + b;
+    if (c.hasBid){
+      document.getElementById('topBidder').textContent='High Bidder: ' + c.bidder;
+      document.getElementById('topBidder').classList.remove('hide-me');
+    }
+  }; 
+  btns();
 }
 
 function togl(x) {
@@ -164,14 +186,17 @@ function cbid() {
   document.getElementById('sell-amt').value = '';
 }
 
+//show els
+function show(q) {
+  document.getElementById(q).classList.remove('hide-me');
+}
+
 //hide bid
 function hbid() {
-  document.getElementById('bidding').classList.add('hide-me');
-  document.getElementById('bid-amt').classList.add('hide-me');
-  document.getElementById('bid-amt-l').classList.add('hide-me');
-  document.getElementById('listing').classList.add('hide-me');
-  document.getElementById('sell-amt').classList.add('hide-me');
-  document.getElementById('sell-amt-l').classList.add('hide-me');
+  x = ['bidding','bid-amt','bid-amt-l','listing','sell-amt','sell-amt-l','sellBtn', 'delist', 'acceptBtn', 'pBid', 'buyBtn','cBid','topBidder'];
+  for (i in x) {
+      document.getElementById(x[i]).classList.add('hide-me');
+  }
 }
 
 if (!document.URL.includes('ms-links')) {is();}

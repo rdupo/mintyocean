@@ -646,3 +646,4 @@ function logBal() {
    console.log(`balance: ${balance} WEI`)
   })  
 }
+

@@ -10016,10 +10016,8 @@ let phunky = [
 "cheeks":"None",
 "teeth":"None"}]
 
-//let l = [225, 418, 484, 342, 9489, 7297, 2576, 8729]
-
 for(let i = 0; i in phunky; i++) {
-	async function price(x) {
+	/*async function price(x) {
 		try {
 			await contract.phunksOfferedForSale(x).then(new Response);
 		} finally {
@@ -10028,29 +10026,28 @@ for(let i = 0; i in phunky; i++) {
 			return pri
 		}
 	}
-	let pri = price(i);
-	let id = phunky[i].tokenId;
-	let img = phunky[i].image_url;
-	let eye = phunky[i].eyes;
-	let lip = phunky[i].lips;
-	let hai = phunky[i].hair;
-	let sex = phunky[i].sex;
-	let ear = phunky[i].ears;
-	let emo = phunky[i].emotion;
-	let bea = phunky[i].beard;
-	let fac = phunky[i].face;
-	let mou = phunky[i].mouth;
-	let nec = phunky[i].neck;
-	let che = phunky[i].cheeks;
-	let nos = phunky[i].nose;
-	let tee = phunky[i].teeth;
-	let tra = phunky[i].totalAttributesExcludingSex;
-	let mydiv =
-	`<div class="phunk-wrapper col-md-2 ib" onclick="deets(this.id);" data-price=#${pri} data-eyes=${eye} data-lips=${lip} data-hair=${hai} data-sex=${sex} data-traits=${tra} data-ears=${ear} data-emo=${emo} data-beard=${bea} data-face=${fac} data-mouth=${mou} data-neck=${nec} data-cheeks=${che} data-nose=${nos} data-teeth=${tee} id=${id}> 
-		<img class="phunk-img" loading="lazy" src=${img}>
-		<p class="phunk-id">Phunk ${id}</p>
-		<p class="pprice"></p>
-	</div>`;
-	const pList = document.getElementById("phunky-list");
-	pList.insertAdjacentHTML("beforeEnd", mydiv);
+	let pri = price(i);*/
+	const phunkCard = document.getElementById('pWrapper').cloneNode(true);
+	phunkCard.setAttribute('onclick',"deets(this.id);");
+	phunkCard.setAttribute('data-eyes', phunky[i].eyes);
+	phunkCard.setAttribute('data-lips', phunky[i].lips);
+	phunkCard.setAttribute('data-hair', phunky[i].hair);
+	phunkCard.setAttribute('data-sex', phunky[i].sex);
+	phunkCard.setAttribute('data-lips', phunky[i].lips);
+	phunkCard.setAttribute('data-traits', phunky[i].totalAttributesExcludingSex);
+	phunkCard.setAttribute('data-ears', phunky[i].ears);
+	phunkCard.setAttribute('data-emo', phunky[i].emotion);
+	phunkCard.setAttribute('data-beard', phunky[i].beard);
+	phunkCard.setAttribute('data-face', phunky[i].face);
+	phunkCard.setAttribute('data-mouth', phunky[i].mouth);
+	phunkCard.setAttribute('data-neck', phunky[i].neck);
+	phunkCard.setAttribute('data-cheeks', phunky[i].cheeks);
+	phunkCard.setAttribute('data-nose', phunky[i].nose);
+	phunkCard.setAttribute('data-teeth', phunky[i].teeth);
+	phunkCard.setAttribute('id', phunky[i].tokenId);
+	console.log(phunkCard.querySelector('section > img'));
+	//phunkCard.getElementsByClassName('.phunk-id').innerText = 'Phunk' + phunky[i].tokenId;
+	//phunkCard.querySelector('img').src = phunky[i].image_url;
+
+	document.getElementById('phunky-list').appendChild(phunkCard);
 }

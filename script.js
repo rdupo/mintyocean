@@ -8,6 +8,7 @@ function pp() {
 
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerText;
+    console.log(txtValue);
     if (txtValue.indexOf(filter) > -1) {
       li[i].parentNode.style.display = "";
     } else {

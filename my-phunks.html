@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="phunk3684.svg">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Silkscreen|Ubuntu+Mono|Roboto+Mono">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>MintySea</title>
+	</head>
+	<body id="content">
+		<div class="hero">
+				<img class="ib hero-icon" src="phunk3684.svg">
+				<h1 class="ib title desk">MintySea</h1>
+				<h1 class="title mobile">Minty<br>Sea</h1>
+		</div>
+		<div class="nav">
+			<a class="nav_el" href="/mintysea">Marketplace</a>
+			<a class="nav_el" href="/mintysea/ms-links">Links</a> 
+ 			<a class="nav_el active" href="/mintysea/my-phunks">My Phunks</a>
+ 			<button onclick="connectWallet()">Connect Wallet</button>  
+		</div>
+		<div>
+			<p class="phunk-id lab tit">My Phunks</p>
+			<div class="phunky-list"></div>
+		</div>
+		<footer class="fixed">
+			<p>✊ Stay phunky my phriends.</p>
+		</footer>
+	</body>
+	<script
+	  src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+	  type="application/javascript"
+	></script>
+	<script async type="text/javascript" src="marketplace.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="construct.js"></script>
+</html>

@@ -11,6 +11,9 @@ function pp() {
     console.log(txtValue);
     if (txtValue.indexOf(filter) > -1) {
       li[i].parentNode.style.display = "";
+      /*if (li[i].parentNode.classList.contains('hide-me')) {
+        li[i].parentNode.classList.remove('hide-me');
+      }*/
     } else {
       li[i].parentNode.style.display = "none";
     }
@@ -36,7 +39,9 @@ function af(d) {
 
     if (txtValue == v) {
       p.classList.remove(c);
-
+      /*if (p.classList.contains('hide-me')) {
+        p.classList.remove('hide-me');
+      }*/
     } else {
       p.classList.add(c); 
     }
@@ -52,6 +57,18 @@ function clr(x) {
       el.classList.remove(f.concat('hide'));
   });
 } 
+
+//load next 1k phunks
+function loadp(x) {
+  var b = 'b' + x;
+  console.log(b);
+  var p = document.getElementsByClassName(b);
+  [].forEach.call(p, function(el){
+      el.classList.remove('hide-me');
+  });
+  var xn = x + 1
+  document.getElementById('lmp').setAttribute('onclick',`loadp(${xn});`);
+}
 
 //show details
 function deets(x) {
@@ -200,4 +217,4 @@ function hbid() {
   }
 }
 
-if (!document.URL.includes('ms-links')) {is();}
+if (!document.URL.includes('ms-links') && !document.URL.includes('my-phunks')) {is();}

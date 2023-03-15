@@ -10016,41 +10016,35 @@ let phunky = [
 "cheeks":"None",
 "teeth":"None"}]
 
-async function build() {
-	for(let i = 0; i < 10000; i++) {
-		const b = await v3Contract.ownerOf(i).then(new Response);
-		if (b == signer._address) {
-			/*p = phunky[i];
-			async function price(p) {
-				const a = await contract.phunksOfferedForSale(p).then(new Response);
-				const pri = ethers.utils.formatEther(parseInt(a.minValue._hex));
-				return pri
-			}
-			let pri = price(p);*/
-			let id = phunky[i].tokenId;
-			let img = phunky[i].image_url;
-			let eye = phunky[i].eyes;
-			let lip = phunky[i].lips;
-			let hai = phunky[i].hair;
-			let sex = phunky[i].sex;
-			let ear = phunky[i].ears;
-			let emo = phunky[i].emotion;
-			let bea = phunky[i].beard;
-			let fac = phunky[i].face;
-			let mou = phunky[i].mouth;
-			let nec = phunky[i].neck;
-			let che = phunky[i].cheeks;
-			let nos = phunky[i].nose;
-			let tee = phunky[i].teeth;
-			let tra = phunky[i].totalAttributesExcludingSex;
-			let mydiv = 
-			`<div class="phunk-wrapper col-md-2 ib b0" onclick="deets(this.id);" data-price="" data-eyes=${eye} data-lips=${lip} data-hair=${hai} data-sex=${sex} data-traits=${tra} data-ears=${ear} data-emo=${emo} data-beard=${bea} data-face=${fac} data-mouth=${mou} data-neck=${nec} data-cheeks=${che} data-nose=${nos} data-teeth=${tee} id=${id}> 
-				<img class="phunk-img" loading="lazy" src=${img}>
-				<p class="phunk-id">Phunk ${id}</p>
-			</div>`;
-			$("#phunky-list").append(mydiv);
-		}
+async function build(i) {
+	const b = await v3Contract.ownerOf(i).then(new Response);
+	if (b == signer._address) {
+		let id = phunky[i].tokenId;
+		let img = phunky[i].image_url;
+		let eye = phunky[i].eyes;
+		let lip = phunky[i].lips;
+		let hai = phunky[i].hair;
+		let sex = phunky[i].sex;
+		let ear = phunky[i].ears;
+		let emo = phunky[i].emotion;
+		let bea = phunky[i].beard;
+		let fac = phunky[i].face;
+		let mou = phunky[i].mouth;
+		let nec = phunky[i].neck;
+		let che = phunky[i].cheeks;
+		let nos = phunky[i].nose;
+		let tee = phunky[i].teeth;
+		let tra = phunky[i].totalAttributesExcludingSex;
+		let mydiv = 
+		`<div class="phunk-wrapper col-md-2 ib b0" onclick="deets(this.id);" data-price="" data-eyes=${eye} data-lips=${lip} data-hair=${hai} data-sex=${sex} data-traits=${tra} data-ears=${ear} data-emo=${emo} data-beard=${bea} data-face=${fac} data-mouth=${mou} data-neck=${nec} data-cheeks=${che} data-nose=${nos} data-teeth=${tee} id=${id}> 
+			<img class="phunk-img" loading="lazy" src=${img}>
+			<p class="phunk-id">Phunk ${id}</p>
+		</div>`;
+		$("#phunky-list").append(mydiv);
 	}
 }
 
-build();
+for(let i = 0; i < 10000; i++) { 
+	try { build(i) } 
+	catch(e) { console.error(e) }
+} 

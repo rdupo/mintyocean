@@ -10040,7 +10040,7 @@ async function build(i) {
 			<img class="phunk-img" loading="lazy" src=${img}>
 			<p class="phunk-id">Phunk ${id}</p>
 		</div>`;
-		document.getElementById("#phunky-list").appendChild(mydiv);
+		document.getElementById("phunky-list").appendChild(mydiv);
 	}
 }
 

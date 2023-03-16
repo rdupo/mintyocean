@@ -10044,7 +10044,14 @@ async function build(i) {
 	}
 }
 
-for(let i = 0; i < 10000; i++) { 
-	try { build(i) } 
-	catch(e) { console.error(e) }
-} 
+var interval = setInterval(function() {
+    // get elem
+    if (typeof v3Contract == 'undefined') return;
+    clearInterval(interval);
+
+    // the rest of the code
+	for(let i = 0; i < 10000; i++) { 
+		try { build(i) } 
+		catch(e) { console.error(e) }
+	} 
+}, 10);

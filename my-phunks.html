@@ -21,9 +21,67 @@
  			<a class="nav_el active" href="/mintysea/my-phunks">My Phunks</a>
  			<button onclick="connectWallet()">Connect Wallet</button>  
 		</div>
+		<div class="hide-me" id='overlay'></div>
+		<div class="hide-me" id='interact'>
+			<div class="i-info wrapper">
+				<div class="i-banner">
+					<div class="ib w75">
+						<p class="attr" id="i-phunk-id" data-id=""></p>
+					</div>
+					<div class="right ib w20">
+						<button class="x" id="x" onclick="togl(['interact', 'overlay']); cbid();hbid();">CLOSE</button>						
+					</div>
+				</div>
+				<div class="ib col-md-4">
+					<img id="i-phunk-img" src="">
+				</div>
+				<div class="ib col-md-4 i-btm">	
+					<p class="phunk-id">Attributes</p>				
+					<p class="attr" id="i-sex"></p>
+					<p class="attr" id="i-eyes"></p>
+					<p class="attr" id="i-lips"></p>
+					<p class="attr" id="i-hair"></p>				
+					<p class="attr" id="i-ears"></p>
+					<p class="attr" id="i-emo"></p>
+					<p class="attr" id="i-beard"></p>
+					<p class="attr" id="i-face"></p>
+					<p class="attr" id="i-mouth"></p>
+					<p class="attr" id="i-neck"></p>
+					<p class="attr" id="i-cheeks"></p>
+					<p class="attr" id="i-nose"></p>
+					<p class="attr" id="i-teeth"></p> 
+				</div>
+				<div class="ib i-btm w28p">
+					<p class="attr phunk-id" id="price"></p>
+					<p class="attr phunk-id" id="bid"></p>
+					<!-- buy/bid -->
+					<button id="buyBtn" class="i-btn mt1 hide-me" onclick="buyPhunk()">BUY</button>
+					<button id="pBid" class="i-btn hide-me" onclick="togl(['bidding','bid-amt','bid-amt-l']); cbid();">BID</button>
+						<label class="hide-me" id="bid-amt-l" for="bid-amt">Bid Price (Ξ)</label>
+						<input class="hide-me" type="number" name="bid-amt" id="bid-amt" placeholder="Bid (Ξ)" maxlength="8">
+						<button class="hide-me" id="bidding" onclick="bidOnPhunk()">PLACE BID</button>
+					<button class="i-btn hide-me" id="cBid" onclick="cancelPhunkBid()">CANCEL BID</button>
+					<!-- list/de-list -->
+					<button id="sellBtn" onclick="togl(['listing','sell-amt','sell-amt-l']);"
+					class="i-btn hide-me">LIST</button>
+						<label class="hide-me" id="sell-amt-l" for="sell-amt">List Price (Ξ)</label>
+						<input class="hide-me" type="number" name="sell-amt" id="sell-amt" placeholder="List Price (Ξ)" maxlength="8">
+						<button class="hide-me" id="listing" onclick="offerPhunkForSale()">LIST</button>
+					<button class="i-btn hide-me" id="delist" onclick="delistPhunk()">DELIST</button>
+					<!-- accept bid -->
+					<button id="acceptBtn" class="i-btn hide-me" onclick="acceptBidForPhunk()">ACCEPT BID</button>
+					<!-- owner & bidder -->
+					<p id="curOwner"></p>
+					<p id="topBidder"></p>
+				</div>
+			</div>
+		</div>
 		<div>
 			<p class="phunk-id lab tit">My Phunks</p>
 			<div class="phunky-list" id="phunky-list"></div>
+		</div>
+		<div class="col-md-12 text-center">
+			<button id="lmp" onclick="contract.withdraw();">Withdraw Ξ</button>
 		</div>
 		<footer class="fixed">
 			<p>✊ Stay phunky my phriends.</p>

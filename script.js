@@ -211,7 +211,7 @@ function show(q) {
 
 //hide bid
 function hbid() {
-  x = ['bidding','bid-amt','bid-amt-l','listing','sell-amt','sell-amt-l','sellBtn', 'delist', 'acceptBtn', 'pBid', 'buyBtn','cBid','topBidder'];
+  x = ['bidding','bid-amt','bid-amt-l','listing','sell-amt','sell-amt-l','sellBtn', 'delist', 'acceptBtn', 'pBid', 'buyBtn','cBid','topBidder','curOwner'];
   for (i in x) {
       document.getElementById(x[i]).classList.add('hide-me');
   }

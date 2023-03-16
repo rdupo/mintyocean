@@ -10037,6 +10037,7 @@ async function build(i) {
 		mydiv.setAttribute('data-nose',phunky[i].nose);
 		mydiv.setAttribute('data-teeth',phunky[i].teeth);
 		mydiv.setAttribute('data-ears',phunky[i].ears);
+		mydiv.setAttribute('onclick', 'deets(this.id);');
 		mydiv.classList.add('phunk-wrapper','col-md-3','ib');
 		mydiv.innerHTML = `<img class="phunk-img" loading="lazy" src=${img}><p class="phunk-id">Phunk ${id}</p>`;
 		document.getElementById("phunky-list").appendChild(mydiv);

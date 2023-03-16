@@ -202,7 +202,7 @@ function is(){
 function cbid() {
   document.getElementById('bid-amt').value = '';
   document.getElementById('sell-amt').value = '';
-  document.getElementById('curOwner').value = '';  
+  document.getElementById('curOwner').innerText = '';  
 }
 
 //show els

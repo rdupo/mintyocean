@@ -202,6 +202,7 @@ function is(){
 function cbid() {
   document.getElementById('bid-amt').value = '';
   document.getElementById('sell-amt').value = '';
+  document.getElementById('curOwner').value = '';  
 }
 
 //show els
@@ -211,7 +212,7 @@ function show(q) {
 
 //hide bid
 function hbid() {
-  x = ['bidding','bid-amt','bid-amt-l','listing','sell-amt','sell-amt-l','sellBtn', 'delist', 'acceptBtn', 'pBid', 'buyBtn','cBid','topBidder','curOwner'];
+  x = ['bidding','bid-amt','bid-amt-l','listing','sell-amt','sell-amt-l','sellBtn', 'delist', 'acceptBtn', 'pBid', 'buyBtn','cBid','topBidder'];
   for (i in x) {
       document.getElementById(x[i]).classList.add('hide-me');
   }

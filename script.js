@@ -217,4 +217,4 @@ function hbid() {
   }
 }
 
-if (!document.URL.includes('ms-links') || !document.URL.includes('my-phunks')) {is();}
+if (!document.URL.includes('ms-links') && !document.URL.includes('my-phunks')) {is();}

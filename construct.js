@@ -10035,8 +10035,8 @@ async function build(i) {
 		let nos = phunky[i].nose;
 		let tee = phunky[i].teeth;
 		let tra = phunky[i].totalAttributesExcludingSex;
-		let mydiv = 
-		`<div class="phunk-wrapper col-md-2 ib b0" onclick="deets(this.id);" data-price="" data-eyes=${eye} data-lips=${lip} data-hair=${hai} data-sex=${sex} data-traits=${tra} data-ears=${ear} data-emo=${emo} data-beard=${bea} data-face=${fac} data-mouth=${mou} data-neck=${nec} data-cheeks=${che} data-nose=${nos} data-teeth=${tee} id=${id}> 
+		let mydiv = document.createElement('p');
+		mydiv.innerHTML = `<div class="phunk-wrapper col-md-2 ib b0" onclick="deets(this.id);" data-price="" data-eyes=${eye} data-lips=${lip} data-hair=${hai} data-sex=${sex} data-traits=${tra} data-ears=${ear} data-emo=${emo} data-beard=${bea} data-face=${fac} data-mouth=${mou} data-neck=${nec} data-cheeks=${che} data-nose=${nos} data-teeth=${tee} id=${id}> 
 			<img class="phunk-img" loading="lazy" src=${img}>
 			<p class="phunk-id">Phunk ${id}</p>
 		</div>`;

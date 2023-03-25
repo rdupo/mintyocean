@@ -583,9 +583,7 @@ function connectWallet() {
 
 connectWallet();
 
-// start functions
-/// selling
-//// list
+// list
 async function offerPhunkForSale() {
   /*need to update to if/else
   if (marketplace approved) {next}
@@ -601,14 +599,14 @@ async function offerPhunkForSale() {
   await listPromise;
 }
 
-//// delist
+// delist
 async function delistPhunk() {
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const delistPromise = contract.phunkNoLongerForSale(phunkId);
   await delistPromise;
 }
 
-//// accept bid
+// accept bid
 async function acceptBidForPhunk() {
   const setApproval = await v3Contract.setApprovalForAll(contractAddress, true);
   await setApproval.wait();
@@ -619,8 +617,7 @@ async function acceptBidForPhunk() {
   await acceptBidPromise;
 }
 
-/// buying
-//// buy
+// buy
 async function buyPhunk() {
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const res = await contract.phunksOfferedForSale(phunkId).then(function(response) {
@@ -632,7 +629,7 @@ async function buyPhunk() {
   await buyPhunkPromise;
 }
 
-//// place bid
+// place bid
 async function bidOnPhunk() {
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const ethBid = ethers.utils.parseEther(document.getElementById("bid-amt").value);
@@ -642,21 +639,20 @@ async function bidOnPhunk() {
 }
 
 
-//// cancel bid
+// cancel bid
 async function cancelPhunkBid() {
   const phunkId = document.getElementById("i-phunk-id").getAttribute("data-id");
   const withdrawBidPromise = contract.withdrawBidForPhunk(phunkId);
   await withdrawBidPromise;
 }
 
-/// misc
-//// withdraw eth
+// withdraw eth
 async function withdrawEth() {
   const withdrawEthPromise = contract.withdraw();
   await withdrawEthPromise;
 }
 
-//// console log connected wallet balance
+// console log connected wallet balance
 function logBal() {
   const network = 'goerli'
   const p = ethers.getDefaultProvider(network)
@@ -665,3 +661,27 @@ function logBal() {
    console.log(`balance: ${balance} WEI`)
   })  
 }
+
+//init sort
+function is(){
+  var mylist = document.getElementById('phunky-list');
+  var divs = mylist.getElementsByClassName('phunk-wrapper');
+  var listitems = [];
+  for (i = 0; i < divs.length; i++) {
+          listitems.push(divs.item(i));
+  }
+  listitems.sort(function(a, b) {
+      if (Number(a.getAttribute('data-price')) <= 0) { var compA = 0;}
+      else {var compA = 1;}
+
+      if (Number(b.getAttribute('data-price')) <= 0) {var compB = 0;}
+      else {var compB = 1;}
+
+      return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+  });
+  for (i = 0; i < listitems.length; i++) {
+      mylist.appendChild(listitems[i]);
+  } 
+}
+
+is();

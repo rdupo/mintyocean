@@ -1,3 +1,13 @@
+//Setup
+/*import { Network, Alchemy } from 'alchemy-sdk';
+
+const settings = {
+    apiKey: "Xq9-5SRgOVU_UxK6uHdIk-oNvvO_n1iZ",
+    network: Network.ETH_GOERLI,
+};
+
+const alchemy = new Alchemy(settings);*/
+
 //filter by id
 function pp() {
   var input, filter, ul, li, a, i, txtValue;

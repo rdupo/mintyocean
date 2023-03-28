@@ -1,53 +1,3 @@
-//Setup
-/*import { Network, Alchemy } from 'alchemy-sdk';
-
-const settings = {
-    apiKey: "Xq9-5SRgOVU_UxK6uHdIk-oNvvO_n1iZ",
-    network: Network.ETH_GOERLI,
-};
-
-const alchemy = new Alchemy(settings);*/
-
-//filter by id
-function pp() {
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("id");
-  filter = input.value;
-  ul = document.getElementById("phunky-list");
-  li = ul.getElementsByClassName("phunk-id");
-
-  for (i = 0; i < li.length; i++) {
-    txtValue = li[i].innerText;
-    console.log(txtValue);
-    if (txtValue.indexOf(filter) > -1) {
-      li[i].parentNode.style.display = "";
-      /*if (li[i].parentNode.classList.contains('hide-me')) {
-        li[i].parentNode.classList.remove('hide-me');
-      }*/
-    } else {
-      li[i].parentNode.style.display = "none";
-    }
-  }
-}
-
-//reset trait filer selection
-function reset(x) {
-      var selectElement = document.getElementById(x)
-        selectElement.selectedIndex = 0;
-}
-
-//load next 1k phunks
-function loadp(x) {
-  var b = 'b' + x;
-  console.log(b);
-  var p = document.getElementsByClassName(b);
-  [].forEach.call(p, function(el){
-      el.classList.remove('hide-me');
-  });
-  var xn = x + 1
-  document.getElementById('lmp').setAttribute('onclick',`loadp(${xn});`);
-}
-
 //show details
 function deets(x) {
   var elems = document.getElementsByClassName('attr');
@@ -93,9 +43,9 @@ function deets(x) {
     if(c.hasBid){document.getElementById('bid').textContent='Top Bid: ' + bid + 'Ξ'}
     if (a.isForSale){document.getElementById('price').textContent='Price: ' + pri + 'Ξ'}
 
-    document.getElementById('curOwner').textContent='Owner: ' + b;
+    document.getElementById('curOwner').textContent='Owner: ' + b.substr(0,4)+"..."+b.substr(-4);
     if (c.hasBid){
-      document.getElementById('topBidder').textContent='High Bidder: ' + c.bidder;
+      document.getElementById('topBidder').textContent='High Bidder: ' + c.bidder.substr(0,4)+"..."+c.bidder.substr(-4);
       document.getElementById('topBidder').classList.remove('hide-me');
     }
   }; 

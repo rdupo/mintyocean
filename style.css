@@ -63,7 +63,8 @@ footer {
 .hero {
 	display: block;
 	font-family: "Silkscreen", sans-serif;
-	background-color: #83dfb2;
+	background-color: #000;
+	color: #83dfb2;
 }
 
 .ib, .dropdown {
@@ -71,15 +72,15 @@ footer {
 }
 
 .hero-icon {
-	height: 85px;
-	margin: 0 0 0 -1em;
+	height: 50px;
+	margin: 0.9em 0 0.5em -0.5em;
+	padding: .25em;
 }
 
 
 .title {
 	vertical-align: middle;	
-	margin: 0;	
-	color: #212529;
+	margin: 0;
 }
 
 .search {

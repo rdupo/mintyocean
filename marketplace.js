@@ -558,9 +558,6 @@ const contractAbi = [
     "type": "function"
   }
 ];
-let contract;
-let signer; 
-const provider = new ethers.providers.Web3Provider(window.ethereum, "goerli");
 
 function connectWallet() {
   provider.send("eth_requestAccounts", []).then(() => {
@@ -580,8 +577,6 @@ function connectWallet() {
   }); 
   console.log('wallet connect attempted'); 
 }
-
-connectWallet();
 
 // list
 async function offerPhunkForSale() {
@@ -685,3 +680,8 @@ function is(){
 }
 
 is();
+
+let contract;
+let signer; 
+const provider = new ethers.providers.Web3Provider(window.ethereum, "goerli");
+connectWallet();

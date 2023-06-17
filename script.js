@@ -25,7 +25,7 @@ function deets(x) {
   document.getElementById('i-phunk-id').setAttribute('data-id',x);
   document.getElementById('i-phunk-img').setAttribute('src',s); 
 
-  async function btns() {
+  async function btns(x) {
     const a = await contract.phunksOfferedForSale(x).then(new Response);
     const b = await v3Contract.ownerOf(x).then(new Response);
     const c = await contract.phunkBids(x).then(new Response);
@@ -49,7 +49,7 @@ function deets(x) {
       document.getElementById('topBidder').classList.remove('hide-me');
     }
   }; 
-  btns();
+  btns(x);
 }
 
 function togl(x) {
